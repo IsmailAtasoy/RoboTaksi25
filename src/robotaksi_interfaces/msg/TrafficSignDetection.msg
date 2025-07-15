@@ -1,0 +1,4 @@
+string label
+float32 confidence
+bool is_pedestrian_crossing
+float32 distance

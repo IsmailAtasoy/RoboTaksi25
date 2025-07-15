@@ -1,0 +1,20 @@
+twist_filter_node:
+  ros__parameters:
+    # Velocity and acceleration limits
+    # From twist_filter_node
+    linear_velocity_max: 1.0  # m/s
+    angular_velocity_max: 2.5 # rad/s
+    linear_acceleration_max: 0.5  # m/s^2
+    angular_acceleration_max: 1.5 # rad/s^2
+    
+    # From ackermann_drive_controller
+    wheelbase: 1.400 # meters
+    wheel_radius: 0.3 # meters
+
+    # Topics
+    # Subscribes to /cmd_vel and publishes to /ackermann_steering_controller/reference
+    twist_topic: "/cmd_vel"
+    ackermann_topic: "/ackermann_steering_controller/reference"
+
+    # Node settings
+    publish_rate: 50.0 # Hz 

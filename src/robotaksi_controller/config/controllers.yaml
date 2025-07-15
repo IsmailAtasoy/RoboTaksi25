@@ -1,0 +1,49 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    position_controller:
+      type: position_controllers/JointGroupPositionController
+
+    velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+position_controller:
+  ros__parameters:
+    joints:
+      - left_front_steering_joint
+      - right_front_steering_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    gains:
+      left_front_steering_joint: {p: 100.0, i: 0.0, d: 1.0}
+      right_front_steering_joint: {p: 100.0, i: 0.0, d: 1.0}
+
+velocity_controller:
+  ros__parameters:
+    joints:
+      - left_back
+      - right_back
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - position
+      - velocity
+    gains:
+      left_back: {p: 10.0, i: 0.0, d: 1.0}
+      right_back: {p: 10.0, i: 0.0, d: 1.0}
+
+twist_filter:
+  ros__parameters:
+    max_speed: 5.0
+    max_angular_velocity: 3.0
+    command_timeout: 0.5
+    accel_limit_linear: 1.0
+    decel_limit_linear: 2.0
+    accel_limit_angular: 1.5
